@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/auto_rental?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+      date-format: yyyy-MM-dd
+      time-zone: Asia/Shanghai
+  mvc:
+    format:
+        date: yyyy-MM-dd
+        date-time: yyyy-MM-dd HH:mm:ss
+    pathmatch:
+        matching-strategy: ant_path_matcher
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.du.rental.entity
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enable: true
+application:
+  sercurity:
+    jwt:
+      secret-key: TtGNShc8FQrpRdANi4vl5ik5yTP6GVQXTtGNShc8FQrpRdANi4vl5ik5yTP6GVQX
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+logging:
+  level:
+    org:
+      hibernate:
+        sql: debug
+        type:
+          descriptor:
+            sql:
+              BASICBINDING: TRACE
