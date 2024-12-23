@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.du.gsfw.mapper.ProductMapper">
+
+
+     <select id="findByCategoryId"
+              resultType="com.du.gsfw.model.dto.ProductsCategoriesDto"
+              parameterType="long">
+             SELECT * FROM northwind.products p JOIN northwind.categories c ON c.CategoryID=P.CategoryID  WHERE P.CategoryID=#{categoryID}
+      </select>
+     <select id="findBysSupplierId"
+              resultType="com.du.gsfw.model.dto.ProductsSuppliersDto"
+              parameterType="long">
+              SELECT * FROM northwind.products p JOIN northwind.suppliers s ON s.SupplierID=p.SupplierID  WHERE p.SupplierID=#{supplierID}
+      </select>
+</mapper>

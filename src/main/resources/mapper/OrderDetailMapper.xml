@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.du.gsfw.mapper.OrderDetailMapper">
+
+     <select id="findByOrderId"
+            resultType="com.du.gsfw.model.dto.OrdersDetailsOrdersDto"
+            parameterType="long">
+       SELECT * FROM northwind.orderDetails o JOIN northwind.orders o1 ON o.OrderID=o1.OrderID  WHERE o.OrderID=#{OrderID}
+    </select>
+     <select id="findByProductId"
+            resultType="com.du.gsfw.model.dto.OrdersDetailsProductsDto"
+            parameterType="long">
+       SELECT * FROM northwind.orderDetails o JOIN northwind.products p ON o.ProductID=p.ProductID  WHERE o.ProductID=#{productID}
+    </select>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.du.gsfw.mapper.OrderMapper">
+
+    <select id="findByCustomerId"
+            resultType="com.du.gsfw.model.dto.OrdersCustomersDto"
+            parameterType="long">
+       SELECT * FROM northwind.orders o JOIN northwind.customers c ON c.CustomerID=o.CustomerID  WHERE o.CustomerID=#{customerId}
+    </select>
+
+    <select id="findByEmployeeId"
+            resultType="com.du.gsfw.model.dto.OrdersEmployeesDto"
+            parameterType="long">
+      SELECT * FROM northwind.orders o JOIN northwind.employees e ON e.EmployeeID=o.EmployeeId  WHERE o.EmployeeId=#{employeeId}
+    </select>
+
+    <select id="findByShipperId"
+            resultType="com.du.gsfw.model.dto.OrdersShippersDto"
+            parameterType="long">
+       SELECT * FROM northwind.orders o JOIN northwind.shippers s ON s.ShipperID=o.ShipperID  WHERE o.ShipperID=#{ShipperID}
+    </select>
+</mapper>
